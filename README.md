@@ -87,5 +87,6 @@ npm run lint      # Analizar código con ESLint
 <h2>📬 Contacto</h2>
 <p>
   Web acá: <br />
-  <strong><a href="https://quantidata.com.ar" target="_blank" rel="noopener noreferrer">https://quantidata.com.ar</a></strong>
+  <strong><a href="https://quantidata.com.ar" target="_blank" rel="noopener noreferrer">https://quantidata.com.ar</a></strong> <br />
+  Captura disponible si el link está caído: <a href="https://github.com/NicoGottig/quanti-landing/blob/main/docs/screencapture-quantidata-ar-2025-11-16-20_07_31.pdf">Click aquí</a>
 </p>
