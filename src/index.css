@@ -17,3 +17,31 @@ body {
 html {
   scroll-behavior: smooth;
 }
+
+/* Agregá esto al contenedor principal, ej. en App.jsx o global.css: */
+
+@media (max-width: 900px) {
+  html,
+  body,
+  #root,
+  .main-wrapper {
+    scroll-snap-type: none !important;
+    -webkit-overflow-scrolling: auto;
+  }
+  section {
+    scroll-snap-align: none !important;
+    scroll-snap-stop: unset !important;
+  }
+}
+
+.footer-quanti {
+  width: 100vw;
+  padding: 0.5rem 0 1.3rem 0;  /* poco espacio arriba, más abajo */
+  margin-top: -0.2rem;
+  font-size: 1.07rem;
+  color: #cdd6e3;
+  text-align: center;
+  background: none;
+  letter-spacing: 0.01em;
+  font-family: 'Poppins', sans-serif;
+}

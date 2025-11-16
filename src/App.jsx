@@ -1,19 +1,20 @@
 import styled from "styled-components";
 import Hero from './components/Hero';
-import Servicios from './components/Servicios';
-import Proyectos from './components/Proyectos';
 import Sobre from './components/Sobre';
-import SemanticCloud from "./components/SemanticCloud"; // <-- NUEVO
+import SemanticCloud from "./components/SemanticCloud";
 import Contacto from './components/Contacto';
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
+import SeccionesConParticulas from "./components/SeccionesConParticulas";
 
 // 🧩 Este contenedor hace que funcione el scroll por secciones
 const PageContainer = styled.div`
   scroll-snap-type: y mandatory;
   height: 100vh;
   scroll-behavior: smooth;
+  overflow-x: hidden;
 `;
+
 
 function App() {
   return (
@@ -21,15 +22,18 @@ function App() {
       <Navbar />
       <PageContainer>
         <Hero />
-        <Servicios />
-        <Proyectos />
+        <SeccionesConParticulas /> {/* <-- Servicios + Proyectos con fondo compartido */}
         <Sobre />
-        <SemanticCloud />   {/* <- NUEVA SECCIÓN */}
+        <SemanticCloud />
         <Contacto />
         <Footer />
       </PageContainer>
     </>
   );
 }
+
+<footer className="footer-quanti">
+  hecho con <span style={{color:'#ffcf4d'}}>♥</span> por <b>Quanti</b>
+</footer>
 
 export default App;

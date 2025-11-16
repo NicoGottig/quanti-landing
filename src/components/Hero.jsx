@@ -19,7 +19,7 @@ const AuroraBg = styled.div`
   position: absolute;
   inset: 0;
   z-index: 0;
-  pointer-events: none; // Para que nunca tape el contenido
+  pointer-events: none;
 `;
 
 const Content = styled.div`
@@ -28,6 +28,7 @@ const Content = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: 0 1.5rem; // anti-overflow horizontal en mobile
 `;
 
 const Logo = styled.img`
@@ -35,6 +36,10 @@ const Logo = styled.img`
   height: 250px;
   margin-bottom: 1rem;
   object-fit: contain;
+  @media (max-width: 900px) {
+    width: 160px;
+    height: 160px;
+  }
   @media (max-width: 500px) {
     width: 90px;
     height: 90px;
@@ -50,40 +55,52 @@ const TypingText = styled.p`
   font-family: 'Roboto Mono', monospace;
   font-size: 1.2rem;
   margin-top: 1rem;
-  white-space: nowrap;
   overflow: hidden;
   border-right: 2px solid #fff;
   animation: ${blink} 0.75s step-end infinite;
   color: white;
+  max-width: 90vw;
+  text-align: center;
+  white-space: nowrap;
   @media (max-width: 500px) {
-    font-size: 0.96rem;
+    font-size: 1rem;
+  }
+`;
+
+const TaglineWrapper = styled.div`
+  min-height: 3.2em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  @media (max-width: 500px) {
+    min-height: 2.2em;
   }
 `;
 
 const Button = styled.button`
   margin-top: 2rem;
-  padding: 0.75rem 1.5rem;
-  font-size: 1rem;
+  padding: 0.9rem 2rem;
+  font-size: 1.08rem;
   background-color: white;
   color: #181828;
   border: none;
   border-radius: 5px;
   cursor: pointer;
   z-index: 1;
-  transition: transform 0.3s ease, opacity 0.3s ease;
+  transition: transform 0.3s, opacity 0.3s;
   opacity: 0;
   transform: translateY(20px);
+  min-width: 160px;
+  min-height: 48px; // touch target mínimo recomendado
   &.visible {
     opacity: 1;
     transform: translateY(0);
   }
-`;
-
-const TaglineWrapper = styled.div`
-  min-height: 3.2em; // Ajusta según tu font-size si querés más o menos espacio
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  @media (max-width: 500px) {
+    margin-bottom: 2rem;
+    padding: 0.8rem 1.5rem;
+    font-size: 1rem;
+  }
 `;
 
 function Hero() {
@@ -148,15 +165,14 @@ function Hero() {
       {/* Contenido centrado */}
       <Content>
         <Logo src="/logo.png" alt="Logo Quanti" draggable={false} />
-          <TaglineWrapper>
+        <TaglineWrapper>
           <TypingText>{typedText}</TypingText>
-          </TaglineWrapper>   
+        </TaglineWrapper>
         <Button
           onClick={scrollToServicios}
           className={showButton ? "visible" : ""}
-          style={{ marginBottom: "3rem" }}
         >
-          Conocé más  
+          Conocé más
         </Button>
       </Content>
     </Container>

@@ -19,6 +19,12 @@ const Container = styled.section`
   padding: 0;
   box-sizing: border-box;
   overflow: hidden;
+
+  @media (max-width: 600px) {
+    height: auto;
+    min-height: 100vh;
+    padding-top: 60px; // para que no tape el navbar fijo en mobile
+  }
 `;
 
 const ContentWrapper = styled.div`
@@ -28,6 +34,12 @@ const ContentWrapper = styled.div`
   align-items: center;
   justify-content: center;
   width: 100%;
+  padding-bottom: 4.2rem;
+  box-sizing: border-box;
+
+  @media (max-width: 600px) {
+    padding-bottom: 2.2rem;
+  }
 `;
 
 const SectionTitle = styled(motion.h2)`
@@ -37,6 +49,11 @@ const SectionTitle = styled(motion.h2)`
   margin: 0 0 1.2rem 0;
   color: #fff;
   letter-spacing: 0.01em;
+
+  @media (max-width: 500px) {
+    font-size: 1.45rem;
+    margin-bottom: 0.8rem;
+  }
 `;
 
 const CardsWrapper = styled.div`
@@ -59,20 +76,27 @@ const CardsWrapper = styled.div`
     gap: 1.5rem;
     margin-top: 0.6rem;
   }
-`;
 
-const ButtonWrapper = styled.div`
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  margin-bottom: 2.5rem;
-
-  @media (max-width: 768px) {
-    margin-bottom: 1.2rem;
+  @media (max-width: 500px) {
+    gap: 1.1rem;
   }
 `;
 
-// ---- Botón con el mismo estilo que en Hero ----
+const ButtonWrapper = styled(motion.div)`
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 0;
+  margin-top: 2.2rem;
+
+  @media (max-width: 768px) {
+    margin-top: 1.1rem;
+  }
+  @media (max-width: 500px) {
+    margin-top: 0.7rem;
+  }
+`;
+
 const Button = styled.button`
   padding: 0.75rem 1.5rem;
   font-size: 1rem;
@@ -82,7 +106,7 @@ const Button = styled.button`
   border-radius: 5px;
   cursor: pointer;
   z-index: 1;
-  transition: transform 0.3s ease, opacity 0.3s ease, background 0.2s;
+  transition: transform 0.3s, opacity 0.3s, background 0.2s;
   opacity: 1;
   transform: translateY(0);
   font-family: 'Poppins', sans-serif;
@@ -90,6 +114,8 @@ const Button = styled.button`
   letter-spacing: 0.03em;
   margin: 0 auto;
   box-shadow: 0 2px 10px rgba(58,41,255,0.07);
+  min-width: 160px;
+  min-height: 48px; // touch target recomendado
 
   &:hover, &:focus {
     background: #ecebff;
@@ -100,29 +126,31 @@ const Button = styled.button`
   @media (max-width: 500px) {
     font-size: 0.96rem;
     padding: 0.6rem 1.1rem;
+    min-width: 140px;
+    min-height: 45px;
   }
 `;
 
 const services = [
   {
-    icon: <FaPoll size={64} />,
+    icon: <FaPoll size={52} />, // menor tamaño para mobile
     title: "Encuestas",
-    description: "Diseño, recolección y análisis de datos sociales y de mercado.",
+    description: "Diseño, implementación y análisis de encuestas para diagnósticos sociales y de mercado.",
   },
   {
-    icon: <FaChartLine size={64} />,
+    icon: <FaChartLine size={52} />,
     title: "Modelos",
-    description: "Modelos predictivos, estadísticos y de machine learning.",
+    description: "Análisis exploratorio y modelos estadísticos y de machine learning para estimaciones y pronósticos.",
   },
   {
-    icon: <FaLaptopCode size={64} />,
+    icon: <FaLaptopCode size={52} />,
     title: "Tableros",
     description: "Desarrollo de dashboards interactivos en R y Python.",
   },
   {
-    icon: <FaClipboardList size={64} />,
+    icon: <FaClipboardList size={52} />,
     title: "Consultoría",
-    description: "Análisis ad hoc, capacitaciones y asesoramiento técnico.",
+    description: "Estudios específicos, capacitaciones y acompañamiento en el uso de datos.",
   },
 ];
 
@@ -157,18 +185,18 @@ function Servicios() {
             </motion.div>
           ))}
         </CardsWrapper>
-      </ContentWrapper>
 
-      <ButtonWrapper as={motion.div}
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        transition={{ duration: 0.55, delay: 0.55 }}
-        viewport={{ once: true }}
-      >
-        <Button onClick={scrollToContacto}>
-          Solicitá una reunión gratis
-        </Button>
-      </ButtonWrapper>
+        <ButtonWrapper
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 0.55, delay: 0.55 }}
+          viewport={{ once: true }}
+        >
+          <Button onClick={scrollToContacto}>
+            Solicitá una reunión gratis
+          </Button>
+        </ButtonWrapper>
+      </ContentWrapper>
     </Container>
   );
 }

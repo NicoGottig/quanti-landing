@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import Particles from "./Particles";
 import heroImage from "../assets/hero-transition.PNG"; // REEMPLAZAR por imagen real
 
 const Section = styled.section`
@@ -14,24 +13,14 @@ const Section = styled.section`
   padding: 2.5rem 2rem;
   scroll-snap-align: start;
   scroll-snap-stop: always;
-  position: relative; /* Necesario para el fondo absoluto */
+  position: relative;
 
   @media (max-width: 900px) {
     flex-direction: column-reverse;
-    padding: 2rem 1rem;
+    padding: 2.2rem 0.6rem 1.1rem 0.6rem;
     min-height: 100vh;
     height: auto;
   }
-`;
-
-const ParticlesBgWrapper = styled.div`
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 0;
-  pointer-events: none;
-  opacity: 0.16; /* Súper sutil */
 `;
 
 const Texto = styled.div`
@@ -54,7 +43,17 @@ const Texto = styled.div`
     width: 100%;
     align-items: center;
     text-align: center;
-    gap: 1rem;
+    gap: 1.05rem;
+    p {
+      font-size: 1.03rem;
+      line-height: 1.6;
+    }
+  }
+  @media (max-width: 600px) {
+    gap: 0.9rem;
+    p {
+      font-size: 0.98rem;
+    }
   }
 `;
 
@@ -81,6 +80,14 @@ const Boton = styled.button`
 
   @media (max-width: 900px) {
     align-self: center;
+    font-size: 1rem;
+    padding: 0.8rem 1.4rem;
+    margin-top: 0.7rem;
+  }
+  @media (max-width: 600px) {
+    padding: 0.7rem 1.05rem;
+    font-size: 0.97rem;
+    margin-top: 0.45rem;
   }
 `;
 
@@ -102,43 +109,38 @@ const ImagenWrapper = styled.div`
   }
 
   @media (max-width: 900px) {
-    width: 90%;
-    margin-bottom: 2.5rem;
+    width: 96%;
+    margin-bottom: 2.1rem;
     max-width: 360px;
+    img {
+      max-width: 340px;
+      border-radius: 1.18rem;
+    }
   }
   @media (max-width: 600px) {
-    max-width: 98vw;
-    margin-bottom: 2rem;
+    width: 99vw;
+    margin-bottom: 1.2rem;
+    max-width: 97vw;
+    img {
+      max-width: 97vw;
+      border-radius: 1.1rem;
+    }
   }
 `;
 
 function Sobre() {
   return (
     <Section id="sobre">
-      {/* Fondo de partículas negras muy sutil */}
-      <ParticlesBgWrapper>
-        <Particles
-          particleColors={['#181828', '#1a1a1a']}
-          particleCount={160}
-          particleSpread={11}
-          speed={0.10}
-          particleBaseSize={80}
-          moveParticlesOnHover={false}
-          alphaParticles={false}
-          disableRotation={false}
-        />
-      </ParticlesBgWrapper>
-
       <Texto>
-        <p style={{ fontWeight: 700, fontSize: "1.35rem" }}>
-          No hacemos magia, hacemos preguntas y buscamos respuestas.
+        <p style={{ fontWeight: 700, fontSize: "1.25rem" }}>
+          No hacemos magia, hacemos preguntas.
         </p>
         <p>
           En <b>Quanti</b>, transformamos información en decisiones.<br/>
-          Nos mueve la curiosidad y el compromiso por entender la realidad de gobiernos y empresas, acompañando cada proceso desde la primera pregunta hasta el resultado final.
+          <br />Nos mueve la curiosidad y el compromiso por entender la realidad, acompañando cada proceso desde la primera pregunta hasta el resultado final.
         </p>
         <p>
-          Creemos que los datos cuentan historias. Escuchar esas historias es nuestro punto de partida para diseñar soluciones a medida y generar impacto real.
+          Creemos que los datos cuentan historias. Escuchar esas historias es nuestro punto de partida para diseñar soluciones a medida y generar el mejor impacto.
         </p>
         <p>
           Trabajamos cerca, con profesionalismo y calidez, porque detrás de cada número hay personas.
@@ -150,7 +152,7 @@ function Sobre() {
 
       <ImagenWrapper>
         <img
-          src={heroImage} // REEMPLAZAR por imagen real y formato definitivo, ideal 900x675px, sin texto sobre la imagen.
+          src={heroImage} // REEMPLAZAR por imagen real, ideal 900x675px, sin texto sobre la imagen.
           alt="Equipo Quanti trabajando" // REEMPLAZAR descripción si es otra imagen
         />
       </ImagenWrapper>
